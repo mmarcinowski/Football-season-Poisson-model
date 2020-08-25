@@ -1,0 +1,378 @@
+Kolejka 6 - 30 września
+
+Widzew - Sosnowiec 30 września, 19:10
+Sandecja - Stomil 30 września, 19:00
+Bełchatów - ŁKS 30 września, 18:00
+Resovia - Odra 
+w Stalowej Woli
+Arka - Tychy 30 września, 19:00
+Korona - Termalica 30 września, 18:00
+Radomiak - Miedź 
+w Puławach
+Chrobry - Łęczna 
+Puszcza - Jastrzębie 30 września, 19:00
+
+Kolejka 7 - 3-4 października
+
+Puszcza - Widzew 4 października, 18:00
+Łęczna - Jastrzębie 4 października, 16:00
+Miedź - Chrobry 
+Termalica - Radomiak 
+Tychy - Korona 4 października, 17:00
+Odra - Arka 3 października, 19:45
+ŁKS - Resovia 3 października, 19:08
+Stomil - Bełchatów 4 października, 17:00
+Sosnowiec - Sandecja 3 października
+
+Kolejka 8 - 10-11 października
+
+Widzew - Sandecja 10 października, 19:10
+Bełchatów - Sosnowiec 10 października, 18:00
+Resovia - Stomil 
+w Stalowej Woli
+Arka - ŁKS 9 października, 19:00
+Korona - Odra 10 października, 18:00
+Radomiak - Tychy 
+w Puławach
+Chrobry - Termalica 
+Puszcza - Łęczna 9 października, 18:00
+Miedź - Jastrzębie 
+
+Kolejka 9 - 17-18 października
+
+Łęczna - Widzew 17 października, 16:00
+Miedź - Puszcza 
+Termalica - Jastrzębie 
+Tychy - Chrobry 17 października, 17:00
+Odra - Radomiak 16 października, 19:45
+ŁKS - Korona 17 października, 19:08
+Stomil - Arka 17 października, 17:00
+Sosnowiec - Resovia 
+Sandecja - Bełchatów 17 października, 18:00
+
+Kolejka 10 - 24-25 października
+
+Widzew - Bełchatów 24 października, 19:10
+Resovia - Sandecja 
+w Stalowej Woli
+Arka - Sosnowiec 23 października, 19:00
+Korona - Stomil 24 października, 18:00
+Radomiak - ŁKS 
+w Puławach
+Chrobry - Odra 
+Puszcza - Termalica 23 października, 18:00
+Łęczna - Miedź 24 października, 16:00
+Tychy - Jastrzębie 24 października, 17:00
+
+Kolejka 11 - 7-8 listopada
+
+Miedź - Widzew 
+Termalica - Łęczna 
+Tychy - Puszcza 7 listopada, 17:00
+Odra - Jastrzębie 6 listopada, 18:30
+ŁKS - Chrobry 7 listopada, 19:08
+Stomil - Radomiak 7 listopada, 17:00
+Sosnowiec - Korona 
+Sandecja - Arka 7 listopada, 17:00
+Bełchatów - Resovia 7 listopada, 17:00
+
+Kolejka 12 - 14-15 listopada
+
+Widzew - Resovia 14 listopada, 19:10
+Arka - Bełchatów 13 listopada, 19:00
+Korona - Sandecja 14 listopada, 18:00
+Radomiak - Sosnowiec 
+w Puławach
+Chrobry - Stomil 
+Jastrzębie - ŁKS 
+Puszcza - Odra 13 listopada, 18:00
+Łęczna - Tychy 14 listopada, 16:00
+Miedź - Termalica 
+
+Kolejka 13 - 21-22 listopada
+
+Termalica - Widzew 
+Tychy - Miedź 21 listopada, 17:00
+Odra - Łęczna 20 listopada, 18:30
+ŁKS - Puszcza 21 listopada, 19:08
+Stomil - Jastrzębie 21 listopada, 17:00
+Sosnowiec - Chrobry 
+Sandecja - Radomiak 21 listopada, 16:00
+Bełchatów - Korona 21 listopada, 17:00
+Resovia - Arka 
+w Stalowej Woli
+
+Kolejka 14 - 28-29 listopada
+
+Widzew - Arka 28 listopada, 19:10
+Korona - Resovia 28 listopada, 18:00
+Radomiak - Bełchatów 
+w Puławach
+Chrobry - Sandecja 28 listopada
+Jastrzębie - Sosnowiec 
+Puszcza - Stomil 27 listopada, 17:00
+Łęczna - ŁKS 28 listopada, 16:00
+Miedź - Odra 
+Termalica - Tychy 
+
+Kolejka 15 - 2 grudnia
+
+Tychy - Widzew 2 grudnia, 19:00
+Odra - Termalica 2 grudnia, 17:30
+ŁKS - Miedź 2 grudnia, 19:08
+Stomil - Łęczna 2 grudnia, 15:00
+Sosnowiec - Puszcza 
+Sandecja - Jastrzębie 2 grudnia, 17:00
+Bełchatów - Chrobry 2 grudnia, 17:00
+Resovia - Radomiak 
+w Stalowej Woli
+Arka - Korona 2 grudnia, 19:00
+
+Kolejka 16 - 5-6 grudnia
+
+Widzew - Korona 5 grudnia, 19:10
+Radomiak - Arka 
+w Puławach
+Chrobry - Resovia 
+Jastrzębie - Bełchatów 
+Puszcza - Sandecja 6 grudnia, 15:00
+Łęczna - Sosnowiec 6 grudnia, 16:00
+Miedź - Stomil 
+Termalica - ŁKS 
+Tychy - Odra 6 grudnia, 17:00
+
+Kolejka 17 - 12-13 grudnia
+
+Odra - Widzew 13 grudnia, 13:00
+ŁKS - Tychy 12 grudnia, 19:08
+Stomil - Termalica 12 grudnia, 15:00
+Sosnowiec - Miedź 
+Sandecja - Łęczna 12 grudnia, 15:00
+Bełchatów - Puszcza 12 grudnia, 17:00
+Resovia - Jastrzębie 
+w Stalowej Woli
+Arka - Chrobry 11 grudnia, 19:00
+Korona - Radomiak 12 grudnia, 18:00
+
+Kolejka 18 - 27-28 lutego
+
+Widzew - Radomiak 
+Korona - Chrobry 
+Arka - Jastrzębie 
+Resovia - Puszcza 
+w Stalowej Woli
+Bełchatów - Łęczna 
+Sandecja - Miedź 
+Sosnowiec - Termalica 
+Stomil - Tychy 
+ŁKS - Odra 
+
+Kolejka 19 - 6-7 marca
+
+Resovia - Łęczna 
+w Stalowej Woli
+Radomiak - Chrobry 
+w Puławach
+ŁKS - Widzew 
+Odra - Stomil 
+Tychy - Sosnowiec 
+Termalica - Sandecja 
+Miedź - Bełchatów 
+Puszcza - Arka 
+Jastrzębie - Korona 
+
+Kolejka 20 - 13-14 marca
+
+Widzew - Chrobry 
+Radomiak - Jastrzębie 
+w Puławach
+Korona - Puszcza 
+Arka - Łęczna 
+Resovia - Miedź 
+w Stalowej Woli
+Bełchatów - Termalica 
+Sandecja - Tychy 
+Sosnowiec - Odra 
+Stomil - ŁKS 
+
+Kolejka 21 - 20-21 marca
+
+Resovia - Termalica 
+w Stalowej Woli
+Stomil - Widzew 
+ŁKS - Sosnowiec 
+Odra - Sandecja 
+Tychy - Bełchatów 
+Miedź - Arka 
+Łęczna - Korona 
+Puszcza - Radomiak 
+Jastrzębie - Chrobry 
+
+Kolejka 22 - 27-28 marca
+
+Widzew - Jastrzębie 
+Chrobry - Puszcza 
+Radomiak - Łęczna 
+w Puławach
+Korona - Miedź 
+Arka - Termalica 
+Resovia - Tychy 
+w Stalowej Woli
+Bełchatów - Odra 
+Sandecja - ŁKS 
+Sosnowiec - Stomil 
+
+Kolejka 23 - 3 kwietnia
+
+Jastrzębie - Puszcza 
+Sosnowiec - Widzew 
+Stomil - Sandecja 
+ŁKS - Bełchatów 
+Odra - Resovia 
+Tychy - Arka 
+Termalica - Korona 
+Miedź - Radomiak 
+Łęczna - Chrobry 
+
+Kolejka 24 - 10-11 kwietnia
+
+Widzew - Puszcza 
+Jastrzębie - Łęczna 
+Chrobry - Miedź 
+Radomiak - Termalica 
+w Puławach
+Korona - Tychy 
+Arka - Odra 
+Resovia - ŁKS 
+w Stalowej Woli
+Bełchatów - Stomil 
+Sandecja - Sosnowiec 
+
+Kolejka 25 - 17-18 kwietnia
+
+Jastrzębie - Miedź 
+Sandecja - Widzew 
+Sosnowiec - Bełchatów 
+Stomil - Resovia 
+ŁKS - Arka 
+Odra - Korona 
+Tychy - Radomiak 
+Termalica - Chrobry 
+Łęczna - Puszcza 
+
+Kolejka 26 - 24-25 kwietnia
+
+Widzew - Łęczna 
+Puszcza - Miedź 
+Jastrzębie - Termalica 
+Chrobry - Tychy 
+Radomiak - Odra 
+w Puławach
+Korona - ŁKS 
+Arka - Stomil 
+Resovia - Sosnowiec 
+w Stalowej Woli
+Bełchatów - Sandecja 
+
+Kolejka 27 - 28 kwietnia
+
+Jastrzębie - Tychy 
+Bełchatów - Widzew 
+Sandecja - Resovia 
+Sosnowiec - Arka 
+Stomil - Korona 
+ŁKS - Radomiak 
+Odra - Chrobry 
+Termalica - Puszcza 
+Miedź - Łęczna 
+
+Kolejka 28 - 1-2 maja
+
+Widzew - Miedź 
+Łęczna - Termalica 
+Puszcza - Tychy 
+Jastrzębie - Odra 
+Chrobry - ŁKS 
+Radomiak - Stomil 
+w Puławach
+Korona - Sosnowiec 
+Arka - Sandecja 
+Resovia - Bełchatów 
+w Stalowej Woli
+
+Kolejka 29 - 8-9 maja
+
+Resovia - Widzew 
+w Stalowej Woli
+Bełchatów - Arka 
+Sandecja - Korona 
+Sosnowiec - Radomiak 
+Stomil - Chrobry 
+ŁKS - Jastrzębie 
+Odra - Puszcza 
+Tychy - Łęczna 
+Termalica - Miedź 
+
+Kolejka 30 - 15-16 maja
+
+Widzew - Termalica 
+Miedź - Tychy 
+Łęczna - Odra 
+Puszcza - ŁKS 
+Jastrzębie - Stomil 
+Chrobry - Sosnowiec 
+Radomiak - Sandecja 
+w Puławach
+Korona - Bełchatów 
+Arka - Resovia 
+
+Kolejka 31 - 22-23 maja
+
+Arka - Widzew 
+Resovia - Korona 
+w Stalowej Woli
+Bełchatów - Radomiak 
+Sandecja - Chrobry 
+Sosnowiec - Jastrzębie 
+Stomil - Puszcza 
+ŁKS - Łęczna 
+Odra - Miedź 
+Tychy - Termalica 
+
+Kolejka 32 - 29-30 maja
+
+Widzew - Tychy 
+Termalica - Odra 
+Miedź - ŁKS 
+Łęczna - Stomil 
+Puszcza - Sosnowiec 
+Jastrzębie - Sandecja 
+Chrobry - Bełchatów 
+Radomiak - Resovia 
+w Puławach
+Korona - Arka 
+
+Kolejka 33 - 5-6 czerwca
+
+Korona - Widzew 
+Arka - Radomiak 
+Resovia - Chrobry 
+w Stalowej Woli
+Bełchatów - Jastrzębie 
+Sandecja - Puszcza 
+Sosnowiec - Łęczna 
+Stomil - Miedź 
+ŁKS - Termalica 
+Odra - Tychy 
+
+Kolejka 34 - 12-13 czerwca
+
+Widzew - Odra 
+Tychy - ŁKS 
+Termalica - Stomil 
+Miedź - Sosnowiec 
+Łęczna - Sandecja 
+Puszcza - Bełchatów 
+Jastrzębie - Resovia 
+Chrobry - Arka 
+Radomiak - Korona 
