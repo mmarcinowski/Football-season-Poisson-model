@@ -1,7 +1,7 @@
 # EkstraModel
 Poisson Model for Polish Ekstraklasa 2020/2021 season
 
-##Notebooks
+## Notebooks
 Poisson1Liga - simple app with prediction model based on Poisson distribution feeded with teams' and whole Fortuna I Liga's statistics
 PoissonEkstraklasa - simple app with prediction model based on Poisson distribution feeded with teams' and whole Ekstraklasa's statistics
 
