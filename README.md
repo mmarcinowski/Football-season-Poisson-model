@@ -1,5 +1,5 @@
-# EkstraModel
-Poisson Model for Polish Ekstraklasa season
+# Football season Poisson model
+Poisson-distribution-based model for simulation of Polish football leagues
 
 ## Notebooks
 Poisson1Liga - simple Jupyter app with prediction model based on Poisson distribution feeded with teams' and whole Fortuna I Liga's statistics
