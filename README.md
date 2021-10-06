@@ -12,4 +12,4 @@ TimeWeightedILiga - simple app with prediction model Poisson distribution feeded
 TimeWeightedEkstraklasa - simple app with prediction model based on Poisson distribution feeded with teams' and whole Ekstraklasa's statistics (number of matchday as a weight)
 
 
-EkstraPredictablityAnalysis - statistics of PoissonEkstraklas model's accuracy 
+EkstraPredictablityAnalysis - script for statistics of PoissonEkstraklas model's accuracy 
