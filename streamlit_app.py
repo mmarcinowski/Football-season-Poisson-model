@@ -97,7 +97,7 @@ st.sidebar.title("Parameters")
 n = st.sidebar.slider('Select number of simulations (10^n):', value=4, min_value=1, max_value=10, step=1, disabled=False)
 matchday = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, step=1, disabled=False)
 league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
-weighted = st.sidebar.checkbox("form considering", value=True, disabled=False)
+weighted = st.sidebar.checkbox("teams' forms considering", value=True, disabled=False)
 
 button = st.sidebar.button('Confirm', disabled=False)
 if button:
