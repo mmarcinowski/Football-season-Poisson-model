@@ -1,5 +1,6 @@
 # Football season Poisson model
-Simple streamlit app with Poisson-distribution-based model for simulation of Polish football leagues
+Simple [streamlit app](https://polish-leagues-model.streamlit.app/) with Poisson-distribution-based model for simulation of Polish football leagues
+
 
 ## Resources
 ekstraklasa_matchdays - results of Ekstraklasa season, divided into matchdays
