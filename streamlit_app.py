@@ -1,28 +1,33 @@
 import streamlit as st
+import streamlit_option_menu
+from streamlit_option_menu import option_menu
 import numpy as np
+import pandas as pd
 from collections import Counter
 import os
 import sys
 from itertools import cycle
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-def initialize(now, weighted):
-    #structures for collecting data: goals shot and conceded, no. of matches played home and away, whole league shot and conceded
+
+def initialize(now, weighted, league):
+    # structures for collecting data: goals shot and conceded, no. of matches played home and away, whole league shot and conceded
     team_shot_home, team_conceded_home, team_shot_away, team_conceded_away = {}, {}, {}, {}
     home_teams, away_teams = [], []
     league_stats = {'shot_home_avg': 0, 'shot_away_avg':0}
 
-    #appending data to strcutures for all matchdays till the chosen one
+    # appending data to strcutures for all matchdays till the chosen one
     matchdays_played = [int(m) for m in os.listdir(f"{league}_matchdays") if int(m)<int(now)]
     
     for m in matchdays_played:
         factor = 1 if not weighted else int(m)
-        h = open(f"{league}_matchdays/{m}", "r", encoding='utf-8')
+        h = open_matchday(m, league)
         for match in h:
             home, away, goal_home, goal_away = match.strip().split("-")
             goal_home, goal_away = int(goal_home), int(goal_away)
             home_teams.extend([home]*factor)
             away_teams.extend([away]*factor)
-
             league_stats['shot_home_avg']+=factor*goal_home
             league_stats['shot_away_avg']+=factor*goal_away
             
@@ -48,7 +53,7 @@ def initialize(now, weighted):
     away_att_strength = {}
     away_def_strength = {}
 
-    #calucalting defence and attack strength for each team
+    # calucalting defence and attack strength for each team
     for k in team_shot_home.keys():
         k_home = home_teams.count(k)
         k_away = away_teams.count(k)
@@ -58,48 +63,124 @@ def initialize(now, weighted):
         away_def_strength[k] = (team_conceded_home[k])/(k_away*league_stats['shot_home_avg'])
 
     return league_stats, home_att_strength, home_def_strength, away_att_strength, away_def_strength
-    
 
-def display_matchday(a, n, weighted):
-    league_stats, home_att_strength, home_def_strength, away_att_strength, away_def_strength = initialize(a, weighted)
-    current = open(f"{league}_matchdays/{str(a)}", "r", encoding='utf-8')
+
+def calculate_match(league_stats, home_att_strength, home_def_strength, away_att_strength, away_def_strength, match, simulations, n=0):
+    # calculate all match-result-factors 
+    home_team = match.strip().split("-")[0]
+    away_team = match.strip().split("-")[1]
+    rng = np.random.default_rng()
+    results = []
+    home = home_att_strength[home_team]*away_def_strength[away_team]*league_stats['shot_home_avg']
+    away = home_def_strength[home_team]*away_att_strength[away_team]*league_stats['shot_away_avg']
+    for i in range(simulations):
+        results.append((int(rng.poisson(home, 1)[0]),int(rng.poisson(away, 1)[0])))
+    if n!=0:
+        probable = Counter(results).most_common(n)
+    else:
+        probable = Counter(results).most_common()
+    return home_team, away_team, home, away, results, probable
+
+
+def open_matchday(a, league):
+    matchday = open(f"{league}_matchdays/{str(a)}", "r", encoding='utf-8')
+    return matchday
+
+
+def display_matchday(a, n, weighted, league):
+    # display whole matchday
+    current = open_matchday(a, league)
     col1, col2 = st.columns(2)
     col_list = [col1, col2]
-        
+    sim = 10**n
+    stats, h_a_s, h_d_s, a_a_s, a_d_s = initialize(a, weighted, league)
     for match, col in zip(current, cycle(col_list)):
-        home_team = match.strip().split("-")[0]
-        away_team = match.strip().split("-")[1]
-        rng = np.random.default_rng()
-        results = []
-        home = home_att_strength[home_team]*away_def_strength[away_team]*league_stats['shot_home_avg']
-        away = home_def_strength[home_team]*away_att_strength[away_team]*league_stats['shot_away_avg']
-        #st.write("\n\n\n")
+        home_team, away_team, home, away, results, probable = calculate_match(stats, h_a_s, h_d_s, a_a_s, a_d_s, match, sim, 5)
         with col:
             st.subheader(f"{home_team} vs {away_team}", divider="blue")
             st.write("Siła:", round(home,4), round(away,4))
-            simulations = 10**n
-            for i in range(simulations):
-                results.append((int(rng.poisson(home, 1)[0]),int(rng.poisson(away, 1)[0])))
-            st.write("Prawdopodobieństwo czystego konta gospodarza:", round(sum(x[1]==0 for x in results)/simulations, 4))
-            st.write("Prawdopodobieństwo czystego konta gościa:", round(sum(x[0]==0 for x in results)/simulations, 4))
+            st.write("Prawdopodobieństwo czystego konta gospodarza:", round(sum(x[1]==0 for x in results)/sim, 4))
+            st.write("Prawdopodobieństwo czystego konta gościa:", round(sum(x[0]==0 for x in results)/sim, 4))
             st.write("Najbardziej prawdopodobne wyniki:")
-            results = Counter(results).most_common(5)
-            for i in results:
-                st.write(f"Wynik: **{i[0][0]}-{i[0][1]}**, Częstość: {i[1]} / {simulations}")
+            for i in probable:
+                st.write(f"Wynik: **{i[0][0]}-{i[0][1]}**, Częstość: {i[1]} / {sim}")
     current.close()
+
+
+def evaluate(now, sim, league):
+    total_confidence, total_position, total_confidence_w, total_position_w = [], [], [], []
+    for i in range(2,now):
+        confidence, position, confidence_w, position_w = 0, 0, 0, 0
+        matchday = open_matchday(i, league)
+        stats, h_a_s, h_d_s, a_a_s, a_d_s = initialize(now, False, league)
+        stats_w, h_a_s_w, h_d_s_w, a_a_s_w, a_d_s_w = initialize(now, True, league) 
+        match_no = 0
+        for match in matchday:
+            match_no+=1
+            _, _, _, _, _, probable = calculate_match(stats, h_a_s, h_d_s, a_a_s, a_d_s, match, sim)
+            _, _, _, _, _, probable_w = calculate_match(stats_w, h_a_s_w, h_d_s_w, a_a_s_w, a_d_s_w, match, sim)
+            _, _, real_goal_home, real_goal_away = match.strip().split("-")
+            x = (int(real_goal_home), int(real_goal_away))
+            for i in probable:
+                if i[0] == x:
+                    confidence+=i[1]
+                    position+=(probable.index(i)+1)
+                    break
+            for i in probable_w:
+                if i[0] == x:
+                    confidence_w+=i[1]
+                    position_w+=(probable_w.index(i)+1)
+                    break     
+        total_confidence.append(confidence/match_no)
+        total_position.append(position/match_no)
+        total_confidence_w.append(confidence_w/match_no)
+        total_position_w.append(position_w/match_no)
+        matchday.close()
+    data_conf = pd.DataFrame({"confidence": total_confidence, "confidence_w": total_confidence_w}, list(range(2,now)))
+    data_pos = pd.DataFrame({"position": total_position, "position_w": total_position_w}, list(range(2,now)))
+    st.write(data_conf)
+    st.write(data_pos)
+    return data_conf, data_pos
 
 sys.path.append("ekstraklasa_matchdays")
 sys.path.append("1liga_matchdays")
 
 st.set_page_config(layout="wide", page_title="Polish Leagues Model")
 st.header("Poisson model for Polish Leagues results prediction", divider="red")
-st.sidebar.title("Parameters")
-n = st.sidebar.slider('Select number of simulations (10^n):', value=4, min_value=1, max_value=10, step=1, disabled=False)
-matchday = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, step=1, disabled=False)
-league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
-weighted = st.sidebar.checkbox("teams' forms considering", value=True, disabled=False)
 
-button = st.sidebar.button('Confirm', disabled=False)
-if button:
-    display_matchday(matchday, n, weighted)
-    
+with st.sidebar:
+    selected = option_menu(
+        menu_title = "",
+        options = ["Prediction","Evaluation"],
+        icons = ["gear","graph-up"],
+        menu_icon = "cast",
+        default_index = 0
+    )
+
+if selected == "Prediction":
+    st.sidebar.title("Parameters")
+    n = st.sidebar.slider('Select number of simulations (10^n):', value=4, min_value=1, max_value=10, step=1, disabled=False)
+    matchday = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, step=1, disabled=False)
+    league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
+    weighted = st.sidebar.checkbox("teams' forms considering", value=True, disabled=False)
+    button = st.sidebar.button('Confirm', disabled=False)
+    if button:
+        display_matchday(matchday, n, weighted, league)
+if selected == "Evaluation":
+    st.sidebar.title("Evaluate")
+    st.write("In progress")
+    now = st.sidebar.number_input("Select actual matchday:", min_value=2, max_value=34, step=1, disabled=False)
+    n = st.sidebar.slider('Select number of simulations (10^n):', value=4, min_value=1, max_value=10, step=1, disabled=False)
+    league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
+    sim =  10**n
+    button = st.sidebar.button('Evaluate', disabled=False)
+    if button:
+        data_conf, data_pos = evaluate(now, sim, league)
+        fig = plt.figure(figsize=(10, 4))
+        sns.relplot(data = data_conf, kind="line")
+        st.pyplot(fig)
+
+
+
+# wynik - wykres średniej pewności dla prawdziwego wyniku, wykres średniej pozycji prawdziwego wyniku
+# czyste konto - średni błąd (odległość od 1 gdy było czyste i od 0 gdy nie było)
