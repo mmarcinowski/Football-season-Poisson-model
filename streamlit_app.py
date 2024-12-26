@@ -1,5 +1,7 @@
 import streamlit as st
 import numpy as np
+import streamlit_option_menu
+from streamlit_option_menu import option_menu
 from collections import Counter
 import os
 import sys
@@ -93,13 +95,24 @@ sys.path.append("1liga_matchdays")
 
 st.set_page_config(layout="wide", page_title="Polish Leagues Model")
 st.header("Poisson model for Polish Leagues results prediction", divider="red")
-st.sidebar.title("Parameters")
-n = st.sidebar.slider('Select number of simulations (10^n):', value=4, min_value=1, max_value=10, step=1, disabled=False)
-matchday = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, step=1, disabled=False)
-league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
-weighted = st.sidebar.checkbox("teams' forms considering", value=True, disabled=False)
 
-button = st.sidebar.button('Confirm', disabled=False)
-if button:
-    display_matchday(matchday, n, weighted)
-    
+with st.sidebar:
+    selected = option_menu(
+        menu_title = "",
+        options = ["Prediction","Evaluation"],
+        icons = ["gear","graph-up"],
+        menu_icon = "cast",
+        default_index = 0
+    )
+if selected == "Prediction":
+    st.sidebar.title("Parameters")
+    n = st.sidebar.slider('Select number of simulations (10^n):', value=4, min_value=1, max_value=10, step=1, disabled=False)
+    matchday = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, step=1, disabled=False)
+    league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
+    weighted = st.sidebar.checkbox("teams' forms considering", value=True, disabled=False)
+        
+    button = st.sidebar.button('Confirm', disabled=False)
+    if button:
+        display_matchday(matchday, n, weighted)
+if selected == "Evaluation":
+        st.sidebar.title("Evaluate")
