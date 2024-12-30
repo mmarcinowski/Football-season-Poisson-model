@@ -7,7 +7,7 @@ from collections import Counter
 import os
 import sys
 from itertools import cycle
-import seaborn as sns
+import altair as alt
 import matplotlib.pyplot as plt
 
 
@@ -131,15 +131,13 @@ def evaluate(now, sim, league):
                     confidence_w+=i[1]
                     position_w+=(probable_w.index(i)+1)
                     break     
-        total_confidence.append(confidence/match_no)
+        total_confidence.append(round((confidence/(sim*match_no)),4))
         total_position.append(position/match_no)
-        total_confidence_w.append(confidence_w/match_no)
+        total_confidence_w.append(round((confidence_w/(sim*match_no)),4))
         total_position_w.append(position_w/match_no)
         matchday.close()
-    data_conf = pd.DataFrame({"confidence": total_confidence, "confidence_w": total_confidence_w}, list(range(2,now)))
-    data_pos = pd.DataFrame({"position": total_position, "position_w": total_position_w}, list(range(2,now)))
-    st.write(data_conf)
-    st.write(data_pos)
+    data_conf = pd.DataFrame({"matchday": list(range(2,now)), "no": total_confidence, "yes": total_confidence_w})
+    data_pos = pd.DataFrame({"matchday": list(range(2,now)), "no": total_position, "yes": total_position_w})
     return data_conf, data_pos
 
 sys.path.append("ekstraklasa_matchdays")
@@ -168,19 +166,19 @@ if selected == "Prediction":
         display_matchday(matchday, n, weighted, league)
 if selected == "Evaluation":
     st.sidebar.title("Evaluate")
-    st.write("In progress")
-    now = st.sidebar.number_input("Select actual matchday:", min_value=2, max_value=34, step=1, disabled=False)
-    n = st.sidebar.slider('Select number of simulations (10^n):', value=4, min_value=1, max_value=10, step=1, disabled=False)
+    n = st.sidebar.slider('Select number of simulations (10^n):', value=3, min_value=1, max_value=10, step=1, disabled=False)
+    now = st.sidebar.number_input("Select actual matchday:", min_value=2, max_value=34, step=1, value=19, disabled=False)
     league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
     sim =  10**n
-    button = st.sidebar.button('Evaluate', disabled=False)
-    if button:
-        data_conf, data_pos = evaluate(now, sim, league)
-        fig = plt.figure(figsize=(10, 4))
-        sns.relplot(data = data_conf, kind="line")
-        st.pyplot(fig)
+    data_conf, data_pos = evaluate(now, sim, league)
+    col1, col2 = st.columns(2)
+    with col1:
+        chart = alt.Chart(data_conf).mark_line(point=True).encode(x="matchday", y = alt.Y('Confidence:Q'), color='Form considering:N').transform_fold(
+            ['yes', 'no'], as_=['Form considering', 'Confidence']).properties(width=750, height=600, title="Average confidence for correct result").interactive()
+        st.altair_chart(chart)
+    with col2:
+        chart2 = alt.Chart(data_pos).mark_line(point=True).encode(x="matchday", y = alt.Y('Position:Q', scale=alt.Scale(reverse=True)), color='Form considering:N').transform_fold(
+            ['yes', 'no'], as_=['Form considering', 'Position']).properties(width=750, height=600, title="Average position of correct result in ranking").interactive()
+        st.altair_chart(chart2)
 
-
-
-# wynik - wykres średniej pewności dla prawdziwego wyniku, wykres średniej pozycji prawdziwego wyniku
 # czyste konto - średni błąd (odległość od 1 gdy było czyste i od 0 gdy nie było)

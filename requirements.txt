@@ -1,2 +1,2 @@
 streamlit-option-menu
-seaborn
+altair
