@@ -8,8 +8,6 @@ import os
 import sys
 from itertools import cycle
 import altair as alt
-import matplotlib.pyplot as plt
-
 
 def initialize(now, weighted, league):
     # structures for collecting data: goals shot and conceded, no. of matches played home and away, whole league shot and conceded
