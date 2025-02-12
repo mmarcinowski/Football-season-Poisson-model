@@ -165,7 +165,7 @@ with st.sidebar:
 if selected == "Prediction":
     st.sidebar.title("Parameters")
     n = st.sidebar.slider('Select number of simulations (10^n):', value=4, min_value=1, max_value=10, step=1, disabled=False)
-    matchday = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, step=1, disabled=False)
+    matchday = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, value=25, step=1, disabled=False)
     league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
     weighted = st.sidebar.selectbox("Teams form considering:", ['no', 'arithmetic', 'exponential'], disabled=False)
     # weighted = st.sidebar.checkbox("teams' forms considering", value=True, disabled=False)
@@ -176,7 +176,7 @@ if selected == "Prediction":
 if selected == "Evaluation":
     st.sidebar.title("Evaluate")
     n = st.sidebar.slider('Select number of simulations (10^n):', value=3, min_value=1, max_value=10, step=1, disabled=False)
-    now = st.sidebar.number_input("Select actual matchday:", min_value=2, max_value=34, step=1, value=19, disabled=False)
+    now = st.sidebar.number_input("Select actual matchday:", min_value=2, max_value=34, step=1, value=25, disabled=False)
     league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
     sim =  10**n
     data_conf, data_pos = evaluate(now, sim, league)
