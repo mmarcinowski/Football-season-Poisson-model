@@ -176,7 +176,7 @@ if selected == "Prediction":
 if selected == "Evaluation":
     st.sidebar.title("Evaluate")
     n = st.sidebar.slider('Select number of simulations (10^n):', value=3, min_value=1, max_value=10, step=1, disabled=False)
-    now = st.sidebar.number_input("Select actual matchday:", min_value=2, max_value=34, step=1, value=9, disabled=False)
+    now = st.sidebar.number_input("Select actual matchday:", min_value=2, max_value=34, step=1, value=11, disabled=False)
     league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
     sim =  10**n
     data_conf, data_pos = evaluate(now, sim, league)
