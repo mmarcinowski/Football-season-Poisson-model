@@ -95,13 +95,31 @@ def display_matchday(now: int, n: int, weighted: str, league: str):
     for match, col in zip(current, cycle(col_list)):
         home_team, away_team, home, away, results, probable = calculate_match(stats, h_a_s, h_d_s, a_a_s, a_d_s, match, sim, 5)
         with col:
-            st.subheader(f"{home_team} vs {away_team}", divider="blue")
-            st.write("Siła:", round(home,4), round(away,4))
-            st.write("Prawdopodobieństwo czystego konta gospodarza:", round(sum(x[1]==0 for x in results)/sim, 4))
-            st.write("Prawdopodobieństwo czystego konta gościa:", round(sum(x[0]==0 for x in results)/sim, 4))
-            st.write("Najbardziej prawdopodobne wyniki:")
-            for i in probable:
-                st.write(f"Wynik: **{i[0][0]}-{i[0][1]}**, Częstość: {i[1]} / {sim}")
+            st.subheader(f"{home_team} vs {away_team}", divider="violet")
+            
+            indicators_table = pd.DataFrame(
+                {
+                    f"{home_team}": [round(home,4), f"{round(sum(x[1]==0 for x in results)/sim*100,2)}%"],
+                    f"{away_team}": [round(away,4), f"{round(sum(x[0]==0 for x in results)/sim*100,2)}%"]
+                },
+                index=["Power", "Clean sheet probability"])
+            #st.write("Siła:", round(home,4), round(away,4))
+            #st.write("Prawdopodobieństwo czystego konta gospodarza:", round(sum(x[1]==0 for x in results)/sim, 4))
+            #st.write("Prawdopodobieństwo czystego konta gościa:", round(sum(x[0]==0 for x in results)/sim, 4))
+            #st.write("Najbardziej prawdopodobne wyniki:")
+            st.table(indicators_table, border="horizontal")
+            
+            st.markdown(":violet-badge[:material/star: Most probable results]")
+            results_table = pd.DataFrame(
+                {
+                    "Result": [f"**{i[0][0]}-{i[0][1]}**" for i in probable],
+                    "Frequency": [f"{i[1]} / {sim}" for i in probable]
+                
+                },
+                index=[str(i+1) for i in range(len(probable))])       
+            st.table(results_table, border="horizontal")
+            #for i in probable:
+            #    st.write(f"Wynik: **{i[0][0]}-{i[0][1]}**, Częstość: {i[1]} / {sim}")
     current.close()
 
 
@@ -165,7 +183,7 @@ with st.sidebar:
 if selected == "Prediction":
     st.sidebar.title("Parameters")
     n = st.sidebar.slider('Select number of simulations (10^n):', value=3, min_value=1, max_value=10, step=1, disabled=False)
-    matchday = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, value=17, step=1, disabled=False)
+    matchday = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, value=19, step=1, disabled=False)
     league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
     weighted = st.sidebar.selectbox("Teams form considering:", ['no', 'arithmetic', 'exponential'], disabled=False)
     # weighted = st.sidebar.checkbox("teams' forms considering", value=True, disabled=False)
@@ -176,7 +194,7 @@ if selected == "Prediction":
 if selected == "Evaluation":
     st.sidebar.title("Evaluate")
     n = st.sidebar.slider('Select number of simulations (10^n):', value=3, min_value=1, max_value=10, step=1, disabled=False)
-    now = st.sidebar.number_input("Select actual matchday:", min_value=2, max_value=34, step=1, value=17, disabled=False)
+    now = st.sidebar.number_input("Select actual matchday:", min_value=2, max_value=34, step=1, value=18, disabled=False)
     league = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
     sim =  10**n
     data_conf, data_pos = evaluate(now, sim, league)
@@ -190,4 +208,4 @@ if selected == "Evaluation":
             ['arithmetic', 'exponential', 'no'], as_=['Form considering', 'Position']).properties(width=750, height=600, title="Average position of correct result in ranking").interactive()
         st.altair_chart(chart2)
 
-# czyste konto - średni błąd (odległość od 1 gdy było czyste i od 0 gdy nie było)
+# TODO: czyste konto - średni błąd (odległość od 1 gdy było czyste i od 0 gdy nie było)
