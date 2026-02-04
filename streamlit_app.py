@@ -222,7 +222,7 @@ with st.sidebar:
 if selected == "Prediction":
     st.sidebar.title("Parameters")
     simulations = st.sidebar.slider('Select number of simulations (10^n):', value=3, min_value=1, max_value=10, step=1, disabled=False)
-    match_day = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, value=19, step=1, disabled=False)
+    match_day = st.sidebar.number_input("Select matchday:", min_value=2, max_value=34, value=20, step=1, disabled=False)
     league_chosen = st.sidebar.selectbox("Select league:", ['ekstraklasa', '1liga'], disabled=False)
     weighting_way = st.sidebar.selectbox("Teams form considering:", ['no', 'arithmetic', 'exponential'], disabled=False)
     button = st.sidebar.button('Confirm', disabled=False)
@@ -242,7 +242,7 @@ if selected == "Evaluation":
         st.altair_chart(chart)
     with column2:
         chart2 = alt.Chart(data_pos).mark_line(point=True).encode(x="matchday", y = alt.Y('Position:Q', scale=alt.Scale(reverse=True)), color='Form considering:N').transform_fold(
-            ['arithmetic', 'exponential', 'no'], as_=['Form considering', 'Position']).properties(width=750, height=600, title="Average position of correct result in ranking").interactive()
+            ['arithmetic', 'exponential', 'no'], as_=['Form considering', 'Position']).properties(width=750, height=600, title="Median position of correct result in ranking").interactive()
         st.altair_chart(chart2)
 
 # TODO: clean sheet - average error (distance from 1 if clean, from 0 if not)
