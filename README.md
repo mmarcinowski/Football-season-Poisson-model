@@ -3,9 +3,9 @@ Simple [streamlit app](https://polish-leagues-model.streamlit.app/) with Poisson
 
 
 ## Resources
-ekstraklasa_matchdays - results of Ekstraklasa season, divided into matchdays
+ekstraklasa_matchdays - results of Ekstraklasa season, split into matchdays
 
-1liga_matchdays - results of I liga season, divided into matchdays
+1liga_matchdays - results of I liga season, split into matchdays
 
 ## Notebooks
 Polish_League_Poisson_Model - simple Jupyter notebook with prediction model based on Poisson distribution feeded with teams' and whole statistics
